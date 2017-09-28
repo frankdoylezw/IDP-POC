@@ -2,6 +2,7 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.IE;
 using System;
+using IDP_POC.PageObjects;
 
 namespace IDP_POC.Tests
 {
@@ -9,13 +10,17 @@ namespace IDP_POC.Tests
     class LoginTest
     {
         IWebDriver Driver;
+        LoginPage Login;
+
         [SetUp]
         public void SetUp()
         {
             var VendorDirectory = System.IO.Directory.GetParent(System.AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.FullName + @"\Vendor";
             var Service = InternetExplorerDriverService.CreateDefaultService(VendorDirectory);
             Driver = new InternetExplorerDriver(Service);
-            Driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
+            Login = new LoginPage(Driver);
+            Driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
+
 
         }
         [TearDown]
@@ -25,15 +30,19 @@ namespace IDP_POC.Tests
         }
         [Test]
 
-        public void ValidAccount()
+        public void ValidAccountCredentials()
         {
-            Driver.Navigate().GoToUrl("https://just-t1-identity-testharness-app.azurewebsites.net/");
-            Driver.FindElement(By.Id("signInLink")).Click();
+            Login.With("frank.doyle@justretirement.com", "Password123");
+            Assert.That(Login.SuccessMessagePresent);
+            //Console.ReadLine();
 
-            Driver.FindElement(By.Id("signInName")).SendKeys("frank.doyle@justretirement.com");
-            Driver.FindElement(By.Id("password")).SendKeys("Password123");
-            Driver.FindElement(By.CssSelector("button")).Click();
-            Assert.That(Driver.FindElement(By.CssSelector("body > div.container.body-content > div.row > div > dl > dd:nth-child(20)")).Displayed);
+        }
+        [Test]
+
+        public void InvalidPassword()
+        {
+            Login.With("frank.doyle@justretirement.com", "Password124");
+            Assert.That(Login.IncorrectPasswordMessagePresent);
             //Console.ReadLine();
 
         }
