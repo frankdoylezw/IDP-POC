@@ -4,7 +4,7 @@ using System;
 
 namespace IDP_POC.PageObjects
 {
-    class LoginPage: BasePage
+    public class LoginPage : BasePage, ILoginPage
     {
         By LoginForm = By.CssSelector("p.lead");
         By SignInLink = By.Id("signInLink");
@@ -30,13 +30,11 @@ namespace IDP_POC.PageObjects
 
         public bool SuccessMessagePresent()
         {
-            System.Threading.Thread.Sleep(1000);
             return IsDisplayed(SuccessMessage,10);
 
         }
         public bool IncorrectPasswordMessagePresent()
         {
-            System.Threading.Thread.Sleep(1000);
             return IsDisplayed(IncorrectPasswordMessage,10);
         }
 

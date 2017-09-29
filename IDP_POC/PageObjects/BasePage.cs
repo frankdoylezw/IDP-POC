@@ -4,7 +4,7 @@ using System;
 
 namespace IDP_POC.PageObjects
 {
-    class BasePage
+    public class BasePage
     {
         IWebDriver Driver;
 
