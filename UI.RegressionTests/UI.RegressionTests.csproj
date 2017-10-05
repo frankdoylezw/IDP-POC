@@ -72,6 +72,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Bindings\LoginSteps.cs" />
+    <Compile Include="Features\FeatureBase.cs" />
     <Compile Include="Features\IDP001 Login Using Valid Credentials.feature.cs">
       <DependentUpon>IDP001 Login Using Valid Credentials.feature</DependentUpon>
       <AutoGen>True</AutoGen>

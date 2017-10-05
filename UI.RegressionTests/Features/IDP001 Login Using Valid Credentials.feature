@@ -1,4 +1,4 @@
-﻿@UIRegression
+﻿@UI
 Feature: IDP001 Login Using Valid Credentials
 	As a standard user
 	I want to ensure that I can login using valid account credentials

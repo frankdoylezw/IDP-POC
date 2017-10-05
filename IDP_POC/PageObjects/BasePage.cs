@@ -44,7 +44,7 @@ namespace IDP_POC.PageObjects
 
                 return false;
             }
-            
+
         }
         protected bool IsDisplayed(By locator, int maxWaitTime)
         {

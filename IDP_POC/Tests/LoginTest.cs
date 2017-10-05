@@ -7,33 +7,15 @@ using IDP_POC.PageObjects;
 namespace IDP_POC.Tests
 {
     [TestFixture]
-    class LoginTest
+    public class LoginTest: TestFixtureBase
     {
-        IWebDriver Driver;
-        LoginPage Login;
-
-        [SetUp]
-        public void SetUp()
-        {
-            var VendorDirectory = System.IO.Directory.GetParent(System.AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.FullName + @"\Vendor";
-            var Service = InternetExplorerDriverService.CreateDefaultService(VendorDirectory);
-            Driver = new InternetExplorerDriver(Service);
-            Login = new LoginPage(Driver);
-            Driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
-
-
-        }
-        [TearDown]
-        public void TearDown()
-        {
-            Driver.Quit();
-        }
+        
         [Test]
 
         public void ValidAccountCredentials()
         {
-            Login.With("frank.doyle@justretirement.com", "Password123");
-            Assert.That(Login.SuccessMessagePresent);
+            _login.With("frank.doyle@justretirement.com", "Password123");
+            Assert.That(_login.SuccessMessagePresent);
             //Console.ReadLine();
 
         }
@@ -41,8 +23,8 @@ namespace IDP_POC.Tests
 
         public void InvalidPassword()
         {
-            Login.With("frank.doyle@justretirement.com", "Password124");
-            Assert.That(Login.IncorrectPasswordMessagePresent);
+            _login.With("frank.doyle@justretirement.com", "Password124");
+            Assert.That(_login.IncorrectPasswordMessagePresent);
             //Console.ReadLine();
 
         }

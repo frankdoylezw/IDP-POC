@@ -19,7 +19,7 @@ namespace UI.RegressionTests.Features
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
     [NUnit.Framework.DescriptionAttribute("IDP001 Login Using Valid Credentials")]
-    [NUnit.Framework.CategoryAttribute("UIRegression")]
+    [NUnit.Framework.CategoryAttribute("UI")]
     public partial class IDP001LoginUsingValidCredentialsFeature
     {
         
@@ -34,7 +34,7 @@ namespace UI.RegressionTests.Features
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
             TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "IDP001 Login Using Valid Credentials", "\tAs a standard user\r\n\tI want to ensure that I can login using valid account crede" +
                     "ntials", ProgrammingLanguage.CSharp, new string[] {
-                        "UIRegression"});
+                        "UI"});
             testRunner.OnFeatureStart(featureInfo);
         }
         
